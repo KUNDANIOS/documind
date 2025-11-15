@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: documind-web
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: PYTHONPATH=src uvicorn documind.web:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: PYTHONPATH
+        value: src
